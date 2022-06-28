@@ -4,16 +4,15 @@ import requests
 Headers = {'Accept': 'application/json'}
 
 ## Filecloud creds
-Creds = {'adminuser': 'admin', 'adminpassword': 'Files@can00!'}
+Creds = {'adminuser': '', 'adminpassword': ''}
 
 ##Filecloud server API endpoints
-ServerURL = 'https://files.canoo.com/'
+ServerURL = 'https://filecloud_url.com/'
 GuestLoginEndPont = 'core/loginguest'
 AdminLoginEndPoint = 'admin/adminlogin'
 
-
 ## Specify user path inside Filecloud.
-FilecloudPath = "/elan"  # To be defined
+FilecloudPath = "/user"  # To be defined
 
 ## Upload API params.
 UploadApiParams = {'appname': 'explorer', 'path': FilecloudPath, 'offset': 0}
@@ -42,10 +41,12 @@ def FCGetUser(session, username):
     user = UserCall.json()
     if user['user'][0]:
         print("User found")
+        return user
         for obj in UserCall.json()['user']:
             print(obj)
     else:
         print("User not found")
+        return None
 
 
 def FCCheckUserExists(session, username):

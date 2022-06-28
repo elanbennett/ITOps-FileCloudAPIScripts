@@ -1,5 +1,6 @@
+import sys, os, time
+sys.path.append(os.getcwd())
 from Functions import filecloud_functions as ff, okta_functions as of, report_functions as rf
-import time
 from datetime import date
 today = date.today().strftime("%m%d%Y")
 
@@ -29,11 +30,9 @@ if __name__ == '__main__':
             line = (username, "false")
         data.append(line)
 
-    path = "/Users/elan/OneDrive - canoo/Projects/PycharmProjects/ITOpsScripts/reports/"
+    path = "/localpath/reports/"
     report_title = "FileCloud User Cleanup_" + today + ".csv"  # Set title
     rf.write_out(data, path, report_title)
-
-
 
     # === TRACK FUNCTION RUN TIME === #
     print("Function run time:")
